@@ -80,6 +80,74 @@ class Program
 }
 ```
 
+## Inheritance
+
+#### Definition
+Inheritance is an OOP concept, where one class can inherit properties and methods of another class.
+
+#### Problem
+Without inheritance, the same functionality often has to be written multiple times for different types of data, leading to code duplication and making it harder to maintain or extend.
+
+#### Solution
+Inheritance enables class to reuse property and functionality of another class reducing redudancy. Also allows to represent data in a hierarchical structure.
+
+#### Example
+```csharp
+using System;
+
+// Parent class (Animal)
+public class Animal
+{
+    public string Name { get; set; }
+
+    // Constructor
+    public Animal(string name)
+    {
+        Name = name;
+    }
+
+    // Method in the parent class
+    public void Eat()
+    {
+        Console.WriteLine($"{Name} is eating.");
+    }
+}
+
+// Child class (Dog) that inherits from Animal
+public class Dog : Animal
+{
+    public string Breed { get; set; }
+
+    // Constructor to initialize the base class and Dog-specific properties
+    public Dog(string name, string breed)
+        : base(name)  // Calling the base class constructor
+    {
+        Breed = breed;
+    }
+
+    // Method in the child class
+    public void Bark()
+    {
+        Console.WriteLine($"{Name} barks.");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Creating an object of the Dog class (which inherits from Animal)
+        Dog myDog = new Dog("Buddy", "Golden Retriever");
+
+        // Calling the method of the parent class (Animal)
+        myDog.Eat();  // Output: Buddy is eating.
+
+        // Calling the method of the child class (Dog)
+        myDog.Bark(); // Output: Buddy barks.
+    }
+}
+```
+
 ## Abstraction
 
 #### Definition
@@ -120,3 +188,69 @@ class Program
 
 ```
 
+## Polymorphism
+
+#### Definition
+Polymorphism is an OOP concept that allows objects of different types to be treated as objects of a common base type.
+
+#### Problem
+Handling different objects with similar functionality often requires explicit type checks. Also requires writing separate functions for each object type leads to lack of flexibility.
+
+#### Solution
+Polymorphism enables objects of different types to be handled uniformly using the same method, allowing code to be more extendible and flexible.
+
+#### Example
+```csharp
+using System;
+
+namespace PolymorphismExample
+{
+    // Base class representing a document
+    public class Document
+    {
+        // Virtual method to be overridden by derived classes
+        public virtual void Print()
+        {
+            Console.WriteLine("Printing a generic document...");
+        }
+    }
+
+    // Derived class representing a PDF document
+    public class PdfDocument : Document
+    {
+        // Override the Print method for PDF documents
+        public override void Print()
+        {
+            Console.WriteLine("Printing a PDF document...");
+        }
+    }
+
+    // Derived class representing a Word document
+    public class WordDocument : Document
+    {
+        // Override the Print method for Word documents
+        public override void Print()
+        {
+            Console.WriteLine("Printing a Word document...");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Create objects of Document, PdfDocument, and WordDocument
+            Document doc1 = new Document();
+            Document pdfDoc = new PdfDocument();  // PdfDocument treated as Document
+            Document wordDoc = new WordDocument();  // WordDocument treated as Document
+
+            // Call the Print method on different objects
+            doc1.Print();   // Output: Printing a generic document...
+            pdfDoc.Print(); // Output: Printing a PDF document...
+            wordDoc.Print(); // Output: Printing a Word document...
+
+            Console.ReadKey();  // Wait for user input before closing
+        }
+    }
+}
+```
