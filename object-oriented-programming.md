@@ -203,16 +203,13 @@ Polymorphism enables objects of different types to be handled uniformly using th
 ```csharp
 using System;
 
-namespace PolymorphismExample
+namespace PolymorphismWithAbstractClassExample
 {
-    // Base class representing a document
-    public class Document
+    // Abstract base class representing a document
+    public abstract class Document
     {
-        // Virtual method to be overridden by derived classes
-        public virtual void Print()
-        {
-            Console.WriteLine("Printing a generic document...");
-        }
+        // Abstract method to be implemented by derived classes
+        public abstract void Print();  // Every derived class must provide an implementation for this method
     }
 
     // Derived class representing a PDF document
@@ -239,15 +236,13 @@ namespace PolymorphismExample
     {
         static void Main(string[] args)
         {
-            // Create objects of Document, PdfDocument, and WordDocument
-            Document doc1 = new Document();
+            // Create objects of Document type, but using specific derived types
             Document pdfDoc = new PdfDocument();  // PdfDocument treated as Document
             Document wordDoc = new WordDocument();  // WordDocument treated as Document
 
             // Call the Print method on different objects
-            doc1.Print();   // Output: Printing a generic document...
-            pdfDoc.Print(); // Output: Printing a PDF document...
-            wordDoc.Print(); // Output: Printing a Word document...
+            pdfDoc.Print();   // Output: Printing a PDF document...
+            wordDoc.Print();  // Output: Printing a Word document...
 
             Console.ReadKey();  // Wait for user input before closing
         }
