@@ -126,7 +126,7 @@ public class Bike : Vehicle
 }
 ```
 
-**Adhere**:
+**Adhere**: Moving `StartEngine()` method to a seperate interface so that only motor based vehicle can use it.
 ```csharp
 public interface IMotor
 {
