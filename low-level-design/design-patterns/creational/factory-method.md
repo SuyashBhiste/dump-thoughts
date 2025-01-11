@@ -19,6 +19,10 @@ Google Docs provides the ability to create, open, edit different types of docume
 ## Structure
 ```mermaid
 classDiagram
+    Logistics..>ITransport
+    Logistics<|--RoadLogistics
+    Logistics<|--SeaLogistics
+
     class Logistics{
         <<abstract>>
         +CreateTransport() ITransport
@@ -30,9 +34,9 @@ classDiagram
     class SeaLogistics{
         +CreateTransport() ITransport
     }
-    Logistics..>ITransport
-    Logistics<|--RoadLogistics
-    Logistics<|--SeaLogistics
+    
+    ITransport<|..Truck
+    ITransport<|..Ship
 
     class ITransport{
         <<interface>>
@@ -44,8 +48,6 @@ classDiagram
     class Ship{
         +Deliver()
     }
-    ITransport<|..Truck
-    ITransport<|..Ship
 ```
 
 ## Code

@@ -18,7 +18,75 @@ A vehicle manufacturing company uses the Abstract Factory pattern to create fami
 
 ## Structure
 ```mermaid
+classDiagram
+    VehicleFactory<..SUVFactory
+    VehicleFactory<..SedanFactory
 
+    SUVFactory..>SUVEngine
+    SUVFactory..>SUVTire
+    SUVFactory..>SUVChassis
+
+    SedanFactory..>SedanEngine
+    SedanFactory..>SedanTire
+    SedanFactory..>SedanChassis
+
+    class VehicleFactory{
+        <<abstract>>
+        +CreateEngine() IEngine
+        +CreateTire() ITire
+        +CreateChassis() IChassis
+    }
+    class SUVFactory{
+        +CreateEngine() IEngine
+        +CreateTire() ITire
+        +CreateChassis() IChassis
+    }
+    class SedanFactory{
+        +CreateEngine() IEngine
+        +CreateTire() ITire
+        +CreateChassis() IChassis
+    }
+
+    class IEngine{
+        <<interface>>
+        +StartEngine()
+    }
+    class ITire{
+        <<interface>>
+        +Rotate()
+    }
+    class IChassis{
+        <<interface>>
+        +SupportLoad()
+    }
+
+    SUVEngine--|>IEngine
+    SUVTire--|>ITire
+    SUVChassis--|>IChassis
+
+    class SUVEngine{
+        +StartEngine()
+    }
+    class SUVTire{
+        +Rotate()
+    }
+    class SUVChassis{
+        +SupportLoad()
+    }
+
+    SedanEngine--|>IEngine
+    SedanTire--|>ITire
+    SedanChassis--|>IChassis
+
+    class SedanEngine{
+        +StartEngine()
+    }
+    class SedanTire{
+        +Rotate()
+    }
+    class SedanChassis{
+        +SupportLoad()
+    }
 ```
 
 ## Code
