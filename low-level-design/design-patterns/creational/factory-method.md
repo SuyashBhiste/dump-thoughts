@@ -14,7 +14,7 @@ Google Docs provides the ability to create, open, edit different types of docume
 
 ## Cons
 - The code may become more complicated since you need to introduce a lot of new subclasses to implement the pattern.
-For example, imagine abstract Mail class has subclasses: AirMail and GroundMail; the Transport product classes are Plane, Truck and Train. While the AirMail class only uses Plane objects, GroundMail may work with both Truck and Train objects.
+*For example, imagine abstract Mail class has subclasses: AirMail and GroundMail; the Transport product classes are Plane, Truck and Train. While the AirMail class only uses Plane objects, GroundMail may work with both Truck and Train objects.*
 
 ## Structure
 ```mermaid
