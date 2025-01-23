@@ -7,7 +7,7 @@ Singleton is a creational design pattern that lets you ensure that a class has o
 1. Mark class as sealed
 2. Mark constructor as private
 3. Declare and initialize a private, static, readonly Lazy<T> variable with a lambda function to create the singleton instance.
-4. Create a public property to access the instance value
+4. Create a public property to access the instance value *(Do not provide set access)*
 
 ## Example
 **Real World:** A country typically has one centralized government that governs and makes decisions for the entire nation.
