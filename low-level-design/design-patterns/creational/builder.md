@@ -6,8 +6,8 @@ Builder is a creational design pattern that helps construct complex objects step
 ## Steps
 1. Define one or more product classes. *(No need for common interface for them)*
 2. Design a builder interface with common construction steps, supporting a generic type, and including methods for `Reset` & `GetProduct`.
-3. Create a concrete builder class by inheriting builder interface for each of the product representations & implement their construction steps.
-4. Implement a director class using a builder interface to manage construction order for different configurations.
+3. Create a concrete builder class for each of the product representations by inheriting builder interface & implement their construction steps.
+4. Implement a director class accepting builder interface to manage construction order for different configurations.
 
 ## Example
 A fast food app would like subway will have lots of customisation options & few predefined menu which makes building process complex. Builder design pattern can be used with products being Order, Recipe, Bill their respective builders and a director class mentioning predefined menu methods.
