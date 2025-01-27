@@ -21,9 +21,9 @@ Singleton is a creational design pattern that lets you ensure that a class has o
 ```mermaid
 classDiagram
       class Singleton{
-          -instance : Lazy<Singleton>
-          +getInstance() Singleton
-          -Singleton()
+          - instance : Lazy<Singleton>
+          - Singleton() %% Constructor
+          + getInstance() : Singleton
       }
 ```
 
