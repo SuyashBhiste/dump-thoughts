@@ -1,7 +1,7 @@
 # Builder Design Pattern
 
 ## Purpose
-Builder is a creational design pattern that helps construct complex objects step by step, by separating their construction process from representation to produce objects of different types.
+Builder is a creational design pattern that helps construct complex objects step by step to produce products of different types.
 
 ## Steps
 1. Define one or more product classes. *(No need for common interface for them)*
