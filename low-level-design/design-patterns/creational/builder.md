@@ -18,7 +18,49 @@ A fast food app would like subway will have lots of customisation options & few 
 
 ## Structure
 ```mermaid
+classDiagram
+    %% Product
+    class Subway{
+        + Bread : string
+        + Cheese : string
+        + Vegetables : List~string~
+        + Sauce : string
+        + ToString() : string
+    }
 
+    %% Builder Interface
+    class ISubwayBuilder~T~{
+        <<interface>>
+        + Reset()
+        + SetBread(string bread)
+        + SetCheese(string cheese)
+        + SetVegetables(List~string~ vegetables)
+        + SetSauce(string sauce)
+        + GetSubway() : T
+    }
+
+    %% Concrete Builder
+    class SubwayBuilder~Subway~{
+        - subway : Subway
+        + Reset()
+        + SetBread(string bread)
+        + SetCheese(string cheese)
+        + SetVegetables(List~string~ vegetables)
+        + SetSauce(string sauce)
+        + GetSubway() : Subway
+    }
+
+    %% Director
+    class SubwayChef~T~{
+        - builder : ISubwayBuilder~T~
+        + BuildVeggieDelight()
+        + BuildClassicItalian()
+    }
+
+    %% Relationship
+    SubwayBuilder~T~-->Subway
+    SubwayBuilder~T~..>ISubwayBuilder~T~
+    SubwayChef-->ISubwayBuilder~T~
 ```
 
 ## Code
@@ -87,11 +129,11 @@ public class SubwayBuilder : ISubwayBuilder<Subway>
 }
 
 // Director
-public class SubwayMaker<T>
+public class SubwayChef<T>
 {
     private readonly ISubwayBuilder<T> _builder;
 
-    public SubwayMaker(ISubwayBuilder<T> builder)
+    public SubwayChef(ISubwayBuilder<T> builder)
     {
         _builder = builder;
     }
@@ -119,15 +161,15 @@ class Program
     static void Main(string[] args)
     {
         ISubwayBuilder<Subway> builder = new SubwayBuilder();
-        SubwayMaker<Subway> maker = new(builder);
+        SubwayChef<Subway> chef = new(builder);
 
         // Build a Veggie Delight Subway
-        maker.BuildVeggieDelight();
+        chef.BuildVeggieDelight();
         Subway veggieDelight = builder.GetSubway();
         Console.WriteLine(veggieDelight);
 
         // Build a Classic Italian Subway
-        maker.BuildClassicItalian();
+        chef.BuildClassicItalian();
         Subway classicItalian = builder.GetSubway();
         Console.WriteLine(classicItalian);
     }
