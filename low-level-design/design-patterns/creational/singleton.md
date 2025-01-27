@@ -22,7 +22,7 @@ Singleton is a creational design pattern that lets you ensure that a class has o
 classDiagram
       class Singleton{
           - instance : Lazy<Singleton>
-          - Singleton() %% Constructor
+          - Singleton()
           + getInstance() Singleton
       }
 ```
