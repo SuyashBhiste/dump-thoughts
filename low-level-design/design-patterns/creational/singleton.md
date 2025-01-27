@@ -23,7 +23,7 @@ classDiagram
       class Singleton{
           - instance : Lazy<Singleton>
           - Singleton() %% Constructor
-          + getInstance() : Singleton
+          + getInstance() Singleton
       }
 ```
 
