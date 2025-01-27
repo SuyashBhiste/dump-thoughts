@@ -2,6 +2,7 @@
 
 ## Purpose
 Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.
+Problem solved - Enhances ability to introduce new products without modifying the main/client class hence following OCP and maintaining clean code
 
 ## Steps
 1. Define a product interface that outlines common functionalities.
