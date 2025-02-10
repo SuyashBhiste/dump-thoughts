@@ -20,15 +20,15 @@ Different countries follow differnt standards for sockets of electrical applianc
 classDiagram
     class IJsonDataProvider {
         <<interface>>
-	    + GetJsonData() : string
+	    + GetJsonData() string
     }
     class XmlDataService {
-	    + GetXmlData() : string
+	    + GetXmlData() string
     }
     class XmlToJsonAdapter {
 	    - _xmlDataService : XmlDataService
-	    + XmlToJsonAdapter()
-	    + GetJsonData() : string
+	    + XmlToJsonAdapter(XmlDataService _xmlDataService)
+	    + GetJsonData() string
     }
 
     IJsonDataProvider <|-- XmlToJsonAdapter
