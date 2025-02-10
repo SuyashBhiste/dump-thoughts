@@ -32,6 +32,7 @@ classDiagram
     }
 
     IJsonDataProvider <|-- XmlToJsonAdapter
+    XmlToJsonAdapter *-- XmlDataService
 ```
 
 ## Code
